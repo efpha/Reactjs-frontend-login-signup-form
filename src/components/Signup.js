@@ -17,7 +17,7 @@ function Signup() {
                   <input type="email" id="email" className="emailInput" placeholder="email" required />
                 </div>
                 <div className="fNameInputSection">
-                  <label htmlFor="firstName">First name</label>
+                  <label htmlFor="firstName">Username</label>
                   <input type="text" id="firstName" className="firstNameInput" placeholder="e.g. John" required />
                 </div>
                 <div className="passwordInputSection">
