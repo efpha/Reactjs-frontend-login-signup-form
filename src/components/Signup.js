@@ -12,38 +12,46 @@ function Signup() {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent page reload on form submission
-
+ 
     // Basic password confirmation check
     if (password !== confirmPassword) {
-      alert('Passwords do not match');
-      return;
+       alert('Passwords do not match');
+       return;
     }
-
+ 
+    // Log data before making the request
+    console.log({
+       email,
+       username,
+       password,
+    });
+ 
     try {
-      const response = await fetch('http://localhost:3001/api/signup', { // Updated the URL to port 3001
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email,
-          username,
-          password,
-        }),
-      });
-
-      if (!response.ok) {
-        const data = await response.json();
-        alert(data.message || 'Signup failed');
-        return;
-      }
-
-      alert('Signup successful');
+       const response = await fetch('http://localhost:3001/api/signup', {
+          method: 'POST',
+          headers: {
+             'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+             email,
+             username,
+             password,
+          }),
+       });
+ 
+       if (!response.ok) {
+          const data = await response.json();
+          alert(data.message || 'Signup failed');
+          return;
+       }
+ 
+       alert('Signup successful');
     } catch (error) {
-      console.error('Error during signup:', error);
-      alert('Error occurred during signup');
+       console.error('Error during signup:', error);
+       alert('Error occurred during signup');
     }
-  };
+ };
+ 
 
   return (
     <div>
