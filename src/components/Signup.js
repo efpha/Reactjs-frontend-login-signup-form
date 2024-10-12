@@ -20,7 +20,7 @@ function Signup() {
     }
 
     try {
-      const response = await fetch('http://localhost:3000/api/signup', {
+      const response = await fetch('http://localhost:3001/api/signup', { // Updated the URL to port 3001
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -32,12 +32,13 @@ function Signup() {
         }),
       });
 
-      const data = await response.json();
-      if (response.ok) {
-        alert('Signup successful');
-      } else {
+      if (!response.ok) {
+        const data = await response.json();
         alert(data.message || 'Signup failed');
+        return;
       }
+
+      alert('Signup successful');
     } catch (error) {
       console.error('Error during signup:', error);
       alert('Error occurred during signup');
@@ -49,7 +50,7 @@ function Signup() {
       <header className="App-header">
         <div className='cardSignUp'>
           <div className='container'>
-            <form onSubmit={handleSubmit}> {/* Add onSubmit handler */}
+            <form onSubmit={handleSubmit}>
               <h5 className="signUpTxt">Create account</h5>
               <hr />
               <div className="inputContainer">
