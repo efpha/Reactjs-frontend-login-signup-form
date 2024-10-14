@@ -52,7 +52,6 @@ function Signup() {
     }
  };
  
-
   return (
     <div>
       <header className="App-header">
