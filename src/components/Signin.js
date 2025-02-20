@@ -8,18 +8,6 @@ function Signin() {
   const [password, setPassword] = useState('');
 
   const handleSubmit = async(e) => {
-    e.preventDefault();
-    console.log({
-      email,
-      password
-    });
-
-
-    const form_data = {
-      email,
-      password
-    }
-
     //frontend form validation
     if(email ==="" || password ===""){
       alert("Fill all the fields");
@@ -31,11 +19,11 @@ function Signin() {
         headers: {
           'Content-Type': 'application/json'
         },
-        body:JSON.stringify(form_data)
+        body:JSON.stringify({ email, password})
       }
     )
     const result = await response.json(); // response from the backend
-    console.log(result);
+    console.log("From frontend",result);
     
     } catch (error) {
       console.log('Error occurred while signing in(frontend)', error);
