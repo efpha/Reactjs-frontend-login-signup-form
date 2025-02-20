@@ -12,44 +12,33 @@ function Signup() {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent page reload on form submission
- 
+
+    //Submit filled inputs only
+    if(email == ""|| username == "" || password == ""){
+      alert("Fill all the fields")
+    }
+  
     // Basic password confirmation check
     if (password !== confirmPassword) {
-       alert('Passwords do not match');
-       return;
-    }
- 
-    // Log data before making the request
-    console.log({
-       email,
-       username,
-       password,
-    });
- 
+      alert('Passwords do not match');
+      return;
+   }
+  const form_data = { email,username,password }
     try {
-       const response = await fetch('http://localhost:3001/api/signup', {
-          method: 'POST',
-          headers: {
-             'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-             email,
-             username,
-             password,
-          }),
-       });
- 
-       if (!response.ok) {
-          const data = await response.json();
-          alert(data.message || 'Signup failed');
-          return;
-       }
- 
-       alert('Signup successful');
+      const response = await fetch('http://localhost:5000/api/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body:JSON.stringify(form_data)
+      }
+    )
+    const result = await response.json(); // response from the backend
+    console.log(result.message);  
     } catch (error) {
-       console.error('Error during signup:', error);
-       alert('Error occurred during signup');
+      alert(error);
     }
+ 
  };
  
   return (
