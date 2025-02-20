@@ -1,11 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Forgotpassword from './Forgotpassword';
 import './App.css';
 import { Link } from 'react-router-dom';
 
 function Signin() {
-  const handleSubmit = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+    console.log({
+      email,
+      password
+    });
+
+
+    const form_data = {
+      email,
+      password
+    }
+
+    //Prevent submision data if field is empty
+    if(email =="" || password ==""){
+      alert("Fill all the fields");
+      return;
+    }
+    try {
+      const response = await fetch('http://localhost:5000/api/signin', {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body:JSON.stringify(form_data)
+      }
+    )
+    const result = await response.json();
+    console.log(result);
     
+    } catch (error) {
+      console.log('Error occurred while signing in', error);
+    }
   }
   return (
     <div>
@@ -21,12 +55,12 @@ function Signin() {
               <div className='inputContainer'>
                 <div className='emailInputSection'>
                   <label htmlFor="email">Email</label>
-                  <input id='email' type="email" className="usernameInput" placeholder="Email" required />
+                  <input id='email' type="email" value={email} className="usernameInput" placeholder="Email" onChange={(e) => setEmail(e.target.value)} required />
                 </div>
 
                 <div className='passwordInputSection'>
                   <label htmlFor="password">Password</label>
-                  <input id='password' type="password" className="passwordInput" placeholder="password" required />
+                  <input id='password' type="password" value={password} className="passwordInput" placeholder="password" onChange={(e) => setPassword(e.target.value)} required />
                 </div>
               </div>
               <div className='btnContainer'>
