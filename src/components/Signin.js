@@ -8,6 +8,7 @@ function Signin() {
   const [password, setPassword] = useState('');
 
   const handleSubmit = async(e) => {
+    e.preventDefault();
     //frontend form validation
     if(email ==="" || password ===""){
       alert("Fill all the fields");
