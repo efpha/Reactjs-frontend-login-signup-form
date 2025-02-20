@@ -1,5 +1,5 @@
-This is a sign-in and sign-up form. 
-It uses ReactJs framework.
-It was solely created to learn reactJs.
-All data entered anywhere within this form, is treated as trash and not saved anywhere whatsoever!
-Link to thee live page https://frontend-login-signup-form.vercel.app/Signin
+This is a sign-in and sign-up form, created to solely learn React.js
+Link to the live page https://frontend-login-signup-form.vercel.app/Signin
+
+
+
