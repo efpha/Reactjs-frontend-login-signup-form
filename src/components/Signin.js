@@ -24,7 +24,7 @@ function Signin() {
       }
     )
     const result = await response.json(); // response from the backend
-    console.log("From frontend",result);
+    console.log(result);
     
     } catch (error) {
       console.log('Error occurred while signing in(frontend)', error);
