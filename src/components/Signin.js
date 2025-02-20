@@ -20,7 +20,7 @@ function Signin() {
       password
     }
 
-    //Prevent submision data if field is empty
+    //frontend form validation
     if(email =="" || password ==""){
       alert("Fill all the fields");
       return;
@@ -34,11 +34,11 @@ function Signin() {
         body:JSON.stringify(form_data)
       }
     )
-    const result = await response.json();
+    const result = await response.json(); // response from the backend
     console.log(result);
     
     } catch (error) {
-      console.log('Error occurred while signing in', error);
+      console.log('Error occurred while signing in(frontend)', error);
     }
   }
   return (
@@ -60,7 +60,7 @@ function Signin() {
 
                 <div className='passwordInputSection'>
                   <label htmlFor="password">Password</label>
-                  <input id='password' type="password" value={password} className="passwordInput" placeholder="password" onChange={(e) => setPassword(e.target.value)} required />
+                  <input id='password' type="password" value={password} className="passwordInput" placeholder="password" onChange={(e) => setPassword(e.target.value)} /*required*/ />
                 </div>
               </div>
               <div className='btnContainer'>
