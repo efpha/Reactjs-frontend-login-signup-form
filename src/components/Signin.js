@@ -21,7 +21,7 @@ function Signin() {
     }
 
     //frontend form validation
-    if(email =="" || password ==""){
+    if(email ==="" || password ===""){
       alert("Fill all the fields");
       return;
     }
