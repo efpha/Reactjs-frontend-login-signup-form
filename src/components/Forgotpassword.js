@@ -3,14 +3,22 @@ import { Link } from "react-router-dom";
 import Redirect from "./Redirect";
 
 function Forgotpassword(){
-
 const [email, setEmail] = useState('');
 
   const handleSubmit = async(e) =>{
     e.preventDefault();
 
+    const response = await fetch('http://localhost:5000/api/forgotpassword', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body:JSON.stringify({ email })
+    }
+  )
 
-    console.log(email);
+  const result = await response.json(); // response from the backend
+  console.log(result);
     document.getElementById('redirectLink').click(); //triggering navigation manually
   }
 
