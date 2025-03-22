@@ -8,7 +8,7 @@ const [email, setEmail] = useState('');
   const handleSubmit = async(e) =>{
     e.preventDefault();
 
-    const response = await fetch('http://localhost:5000/api/forgotpassword', {
+    const response = await fetch('https://backend-login-signup-form.onrender.com/api/forgotpassword', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json'
