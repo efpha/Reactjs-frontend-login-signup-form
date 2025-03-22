@@ -25,7 +25,7 @@ function Signup() {
    }
   const form_data = { email,username,password }
     try {
-      const response = await fetch('http://localhost:5000/api/signup', {
+      const response = await fetch('https://backend-login-signup-form.onrender.com/api/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
